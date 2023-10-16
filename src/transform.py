@@ -124,3 +124,19 @@ def parse_trending_video_stats(statistics: dict) -> dict:
         view_count,
     )
     return asdict(trending_video_stats)
+
+
+def parse_video_data(data: dict, file_name: Path) -> tuple[dict, dict, dict, dict]:
+    file_name = file_name.stem
+    data["trendingDate"] = file_name[3:-2].replace("_", "-")
+    # (trending_date, year, month, day_of_month, day_of_week, week_of_month, week_of_year)
+    trending_date = parse_trending_date(data["trendingDate"])
+    # (video_id, title, duration, caption, rank, published_at, description, tags)
+    dim_video = parse_dim_video(data)
+    # (channel_id, channel_title)
+    dim_channel = parse_dim_channel(data["snippet"])
+    video_statistics = data["statistics"]
+    video_statistics["regionCode"] = file_name[:2]
+    video_statistics["categoryId"] = data["snippet"]["categoryId"]
+
+    return trending_date, dim_video, dim_channel, video_statistics
