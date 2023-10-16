@@ -140,3 +140,13 @@ def parse_video_data(data: dict, file_name: Path) -> tuple[dict, dict, dict, dic
     video_statistics["categoryId"] = data["snippet"]["categoryId"]
 
     return trending_date, dim_video, dim_channel, video_statistics
+
+
+def read_json_file(file: Path) -> list[dict]:
+    with open(file, "r", encoding="utf-8") as f:
+        data = dict(json.load(f))
+    data = data["items"]
+    for index in range(len(data)):
+        rank = index + 1
+        data[index]["rank"] = rank
+    return data
