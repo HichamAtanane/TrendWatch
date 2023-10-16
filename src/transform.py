@@ -102,3 +102,25 @@ def parse_dim_channel(snippet: dict) -> dict:
     channel_title = snippet["channelTitle"]
     dim_channel = DimensionChannel(channel_id, channel_title)
     return asdict(dim_channel)
+
+
+def parse_trending_video_stats(statistics: dict) -> dict:
+    trending_date_pk = statistics["trending_date_pk"]
+    video_pk = statistics["video_pk"]
+    channel_pk = statistics["channel_pk"]
+    category_id = statistics["categoryId"]
+    region_code = statistics["regionCode"]
+    comment_count = statistics.get("commentCount", 0)
+    like_count = statistics.get("likeCount", 0)
+    view_count = statistics["viewCount"]
+    trending_video_stats = FactTrendingVideoStats(
+        trending_date_pk,
+        video_pk,
+        channel_pk,
+        category_id,
+        region_code,
+        comment_count,
+        like_count,
+        view_count,
+    )
+    return asdict(trending_video_stats)
