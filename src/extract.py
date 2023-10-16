@@ -27,3 +27,24 @@ def region_codes() -> list[str]:
             "Please make sure the region_codes.txt file exists in the provided path!"
         )
         sys.exit(1)
+
+
+def fetch_trending_videos(region_code: str, next_page_token: Optional[str]) -> dict:
+    try:
+        youtube = build("youtube", "v3", developerKey=API_KEY)
+        request = youtube.videos().list(
+            part="snippet,contentDetails,statistics,topicDetails,status,recordingDetails,player",
+            fields="items(id, contentDetails(caption, duration), "
+            "statistics(commentCount, likeCount, viewCount), "
+            "snippet(channelId, channelTitle, title, categoryId, tags, publishedAt, description)), "
+            "nextPageToken",
+            chart="mostPopular",
+            regionCode=region_code,
+            maxResults=50,
+            pageToken=next_page_token,
+        )
+        response = request.execute()
+        return dict(response)
+    except Exception as e:
+        logging.error(f"Failed to fetch data for {region_code}:\n {str(e)}")
+        return {}
