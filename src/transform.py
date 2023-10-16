@@ -65,3 +65,33 @@ def parse_trending_date(trending_date: str) -> dict:
         week_of_year,
     )
     return asdict(dim_trending_date)
+
+
+def duration_in_seconds(duration: str) -> int:
+    pattern = r"^PT(\d+H)?(\d+M)?(\d+S)?$"
+    match = re.match(pattern, duration)
+    if match:
+        hours = int(match.group(1)[:-1]) if match.group(1) else 0
+        minutes = int(match.group(2)[:-1]) if match.group(2) else 0
+        seconds = int(match.group(3)[:-1]) if match.group(3) else 0
+        duration = hours * 3600 + minutes * 60 + seconds
+    else:
+        duration = 0
+    return duration
+
+
+def parse_dim_video(data: dict) -> dict:
+    video_id = data["id"]
+    duration = duration_in_seconds(data["contentDetails"]["duration"])
+    caption = data["contentDetails"]["caption"]
+    caption = 1 if caption == "true" else 0
+    title = data["snippet"]["title"]
+    rank = data["rank"]
+    published_at = data["snippet"]["publishedAt"]
+    # published_at = datetime.strptime(published_at, '%Y-%m-%dT%H:%M:%SZ')
+    description = data["snippet"]["description"]
+    tags = data["snippet"]["tags"] if "tags" in data["snippet"] else []
+    dim_video = DimensionVideo(
+        video_id, title, duration, caption, rank, published_at, description, tags
+    )
+    return asdict(dim_video)
