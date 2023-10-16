@@ -48,3 +48,17 @@ def fetch_trending_videos(region_code: str, next_page_token: Optional[str]) -> d
     except Exception as e:
         logging.error(f"Failed to fetch data for {region_code}:\n {str(e)}")
         return {}
+
+
+def save_trending_videos(
+    trending_videos: dict, region_code: str, api_page_num: int
+) -> None:
+    # create the directories if they don't exist
+    Path(STAGING_DIR).mkdir(parents=True, exist_ok=True)
+    filename = (
+        f"{region_code}_{datetime.today().strftime('%Y_%m_%d')}_{api_page_num}.json"
+    )
+    filename = Path(STAGING_DIR) / filename
+    with open(filename, "w", encoding="utf-8") as file:
+        json.dump(trending_videos, file, indent=4, sort_keys=True, ensure_ascii=False)
+    logging.info(f"{region_code}'s trending videos saved successfully to {filename}")
