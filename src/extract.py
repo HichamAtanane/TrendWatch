@@ -62,3 +62,23 @@ def save_trending_videos(
     with open(filename, "w", encoding="utf-8") as file:
         json.dump(trending_videos, file, indent=4, sort_keys=True, ensure_ascii=False)
     logging.info(f"{region_code}'s trending videos saved successfully to {filename}")
+
+
+def main() -> None:
+    REGION_CODES = region_codes()
+    for region_code in REGION_CODES:
+        logging.info(f"{region_code} Starting...")
+        next_page_token = None
+        api_page_num = 1
+        while True:
+            response = fetch_trending_videos(region_code, next_page_token)
+            # store data
+            save_trending_videos(response, region_code, api_page_num)
+            next_page_token = response.get("NextPageToken")
+            api_page_num += 1
+            if not next_page_token:
+                break
+
+
+if __name__ == "__main__":
+    main()
