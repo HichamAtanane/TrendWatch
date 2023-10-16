@@ -95,3 +95,10 @@ def parse_dim_video(data: dict) -> dict:
         video_id, title, duration, caption, rank, published_at, description, tags
     )
     return asdict(dim_video)
+
+
+def parse_dim_channel(snippet: dict) -> dict:
+    channel_id = snippet["channelId"]
+    channel_title = snippet["channelTitle"]
+    dim_channel = DimensionChannel(channel_id, channel_title)
+    return asdict(dim_channel)
