@@ -12,8 +12,8 @@ from dotenv import dotenv_values
 config = dotenv_values("../.env")
 API_KEY = config["API_KEY"]
 REGION_CODES_FILE = Path("../data/input/region_codes.txt")
-STAGING_DIR = "../data/staging/"
-LOG_FILE = Path(STAGING_DIR) / "etl.log"
+STAGING_DIR = Path("../data/staging/")
+LOG_FILE = STAGING_DIR / "etl.log"
 logging.basicConfig(filename=LOG_FILE, level=logging.INFO)
 
 
@@ -54,11 +54,11 @@ def save_trending_videos(
     trending_videos: dict, region_code: str, api_page_num: int
 ) -> None:
     # create the directories if they don't exist
-    Path(STAGING_DIR).mkdir(parents=True, exist_ok=True)
+    STAGING_DIR.mkdir(parents=True, exist_ok=True)
     filename = (
         f"{region_code}_{datetime.today().strftime('%Y_%m_%d')}_{api_page_num}.json"
     )
-    filename = Path(STAGING_DIR) / filename
+    filename = STAGING_DIR / filename
     with open(filename, "w", encoding="utf-8") as file:
         json.dump(trending_videos, file, indent=4, sort_keys=True, ensure_ascii=False)
     logging.info(f"{region_code}'s trending videos saved successfully to {filename}")
