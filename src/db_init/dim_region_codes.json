@@ -1,0 +1,438 @@
+[
+ {
+   "region_id": "AE",
+   "region_name": "United Arab Emirates (The)"
+ },
+ {
+   "region_id": "AR",
+   "region_name": "Argentina"
+ },
+ {
+   "region_id": "AT",
+   "region_name": "Austria"
+ },
+ {
+   "region_id": "AU",
+   "region_name": "Australia"
+ },
+ {
+   "region_id": "AZ",
+   "region_name": "Azerbaijan"
+ },
+ {
+   "region_id": "BA",
+   "region_name": "Bosnia and Herzegovina"
+ },
+ {
+   "region_id": "BD",
+   "region_name": "Bangladesh"
+ },
+ {
+   "region_id": "BE",
+   "region_name": "Belgium"
+ },
+ {
+   "region_id": "BG",
+   "region_name": "Bulgaria"
+ },
+ {
+   "region_id": "BH",
+   "region_name": "Bahrain"
+ },
+ {
+   "region_id": "BO",
+   "region_name": "Bolivia (Plurinational State of)"
+ },
+ {
+   "region_id": "BR",
+   "region_name": "Brazil"
+ },
+ {
+   "region_id": "BY",
+   "region_name": "Belarus"
+ },
+ {
+   "region_id": "CA",
+   "region_name": "Canada"
+ },
+ {
+   "region_id": "CH",
+   "region_name": "Switzerland"
+ },
+ {
+   "region_id": "CL",
+   "region_name": "Chile"
+ },
+ {
+   "region_id": "CO",
+   "region_name": "Colombia"
+ },
+ {
+   "region_id": "CR",
+   "region_name": "Costa Rica"
+ },
+ {
+   "region_id": "CY",
+   "region_name": "Cyprus"
+ },
+ {
+   "region_id": "CZ",
+   "region_name": "Czechia"
+ },
+ {
+   "region_id": "DE",
+   "region_name": "Germany"
+ },
+ {
+   "region_id": "DK",
+   "region_name": "Denmark"
+ },
+ {
+   "region_id": "DO",
+   "region_name": "Dominican Republic"
+ },
+ {
+   "region_id": "DZ",
+   "region_name": "Algeria"
+ },
+ {
+   "region_id": "EC",
+   "region_name": "Ecuador"
+ },
+ {
+   "region_id": "EE",
+   "region_name": "Estonia"
+ },
+ {
+   "region_id": "EG",
+   "region_name": "Egypt"
+ },
+ {
+   "region_id": "ES",
+   "region_name": "Spain"
+ },
+ {
+   "region_id": "FI",
+   "region_name": "Finland"
+ },
+ {
+   "region_id": "FR",
+   "region_name": "France"
+ },
+ {
+   "region_id": "GB",
+   "region_name": "United Kingdom"
+ },
+ {
+   "region_id": "GE",
+   "region_name": "Georgia"
+ },
+ {
+   "region_id": "GH",
+   "region_name": "Ghana"
+ },
+ {
+   "region_id": "GR",
+   "region_name": "Greece"
+ },
+ {
+   "region_id": "GT",
+   "region_name": "Guatemala"
+ },
+ {
+   "region_id": "HK",
+   "region_name": "Hong Kong"
+ },
+ {
+   "region_id": "HN",
+   "region_name": "Honduras"
+ },
+ {
+   "region_id": "HR",
+   "region_name": "Croatia"
+ },
+ {
+   "region_id": "HU",
+   "region_name": "Hungary"
+ },
+ {
+   "region_id": "ID",
+   "region_name": "Indonesia"
+ },
+ {
+   "region_id": "IE",
+   "region_name": "Ireland"
+ },
+ {
+   "region_id": "IL",
+   "region_name": "Israel"
+ },
+ {
+   "region_id": "IN",
+   "region_name": "India"
+ },
+ {
+   "region_id": "IQ",
+   "region_name": "Iraq"
+ },
+ {
+   "region_id": "IS",
+   "region_name": "Iceland"
+ },
+ {
+   "region_id": "IT",
+   "region_name": "Italy"
+ },
+ {
+   "region_id": "JM",
+   "region_name": "Jamaica"
+ },
+ {
+   "region_id": "JO",
+   "region_name": "Jordan"
+ },
+ {
+   "region_id": "JP",
+   "region_name": "Japan"
+ },
+ {
+   "region_id": "KE",
+   "region_name": "Kenya"
+ },
+ {
+   "region_id": "KH",
+   "region_name": "Cambodia"
+ },
+ {
+   "region_id": "KR",
+   "region_name": "Korea (Republic of)"
+ },
+ {
+   "region_id": "KW",
+   "region_name": "Kuwait"
+ },
+ {
+   "region_id": "KZ",
+   "region_name": "Kazakhstan"
+ },
+ {
+   "region_id": "LA",
+   "region_name": "Lao People's Democratic Republic"
+ },
+ {
+   "region_id": "LB",
+   "region_name": "Lebanon"
+ },
+ {
+   "region_id": "LI",
+   "region_name": "Liechtenstein"
+ },
+ {
+   "region_id": "LK",
+   "region_name": "Sri Lanka"
+ },
+ {
+   "region_id": "LT",
+   "region_name": "Lithuania"
+ },
+ {
+   "region_id": "LU",
+   "region_name": "Luxembourg"
+ },
+ {
+   "region_id": "LV",
+   "region_name": "Latvia"
+ },
+ {
+   "region_id": "LY",
+   "region_name": "Libya"
+ },
+ {
+   "region_id": "MA",
+   "region_name": "Morocco"
+ },
+ {
+   "region_id": "ME",
+   "region_name": "Montenegro"
+ },
+ {
+   "region_id": "MK",
+   "region_name": "North Macedonia (Republic of)"
+ },
+ {
+   "region_id": "MT",
+   "region_name": "Malta"
+ },
+ {
+   "region_id": "MX",
+   "region_name": "Mexico"
+ },
+ {
+   "region_id": "MY",
+   "region_name": "Malaysia"
+ },
+ {
+   "region_id": "NG",
+   "region_name": "Nigeria"
+ },
+ {
+   "region_id": "NI",
+   "region_name": "Nicaragua"
+ },
+ {
+   "region_id": "NL",
+   "region_name": "Netherlands"
+ },
+ {
+   "region_id": "NO",
+   "region_name": "Norway"
+ },
+ {
+   "region_id": "NP",
+   "region_name": "Nepal"
+ },
+ {
+   "region_id": "NZ",
+   "region_name": "New Zealand"
+ },
+ {
+   "region_id": "OM",
+   "region_name": "Oman"
+ },
+ {
+   "region_id": "PA",
+   "region_name": "Panama"
+ },
+ {
+   "region_id": "PE",
+   "region_name": "Peru"
+ },
+ {
+   "region_id": "PG",
+   "region_name": "Papua New Guinea"
+ },
+ {
+   "region_id": "PH",
+   "region_name": "Philippines"
+ },
+ {
+   "region_id": "PK",
+   "region_name": "Pakistan"
+ },
+ {
+   "region_id": "PL",
+   "region_name": "Poland"
+ },
+ {
+   "region_id": "PR",
+   "region_name": "Puerto Rico"
+ },
+ {
+   "region_id": "PT",
+   "region_name": "Portugal"
+ },
+ {
+   "region_id": "PY",
+   "region_name": "Paraguay"
+ },
+ {
+   "region_id": "QA",
+   "region_name": "Qatar"
+ },
+ {
+   "region_id": "RO",
+   "region_name": "Romania"
+ },
+ {
+   "region_id": "RS",
+   "region_name": "Serbia"
+ },
+ {
+   "region_id": "RU",
+   "region_name": "Russian Federation"
+ },
+ {
+   "region_id": "SA",
+   "region_name": "Saudi Arabia"
+ },
+ {
+   "region_id": "SE",
+   "region_name": "Sweden"
+ },
+ {
+   "region_id": "SG",
+   "region_name": "Singapore"
+ },
+ {
+   "region_id": "SI",
+   "region_name": "Slovenia"
+ },
+ {
+   "region_id": "SK",
+   "region_name": "Slovakia"
+ },
+ {
+   "region_id": "SN",
+   "region_name": "Senegal"
+ },
+ {
+   "region_id": "SV",
+   "region_name": "El Salvador"
+ },
+ {
+   "region_id": "TH",
+   "region_name": "Thailand"
+ },
+ {
+   "region_id": "TN",
+   "region_name": "Tunisia"
+ },
+ {
+   "region_id": "TR",
+   "region_name": "Turkey"
+ },
+ {
+   "region_id": "TW",
+   "region_name": "Taiwan (Province of China)"
+ },
+ {
+   "region_id": "TZ",
+   "region_name": "Tanzania (United Republic of)"
+ },
+ {
+   "region_id": "UA",
+   "region_name": "Ukraine"
+ },
+ {
+   "region_id": "UG",
+   "region_name": "Uganda"
+ },
+ {
+   "region_id": "US",
+   "region_name": "United States of America"
+ },
+ {
+   "region_id": "UY",
+   "region_name": "Uruguay"
+ },
+ {
+   "region_id": "VE",
+   "region_name": "Venezuela (Bolivarian Republic of)"
+ },
+ {
+   "region_id": "VN",
+   "region_name": "Viet Nam"
+ },
+ {
+   "region_id": "YE",
+   "region_name": "Yemen"
+ },
+ {
+   "region_id": "ZA",
+   "region_name": "South Africa"
+ },
+ {
+   "region_id": "ZW",
+   "region_name": "Zimbabwe"
+ }
+]
