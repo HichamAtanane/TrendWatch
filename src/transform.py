@@ -11,7 +11,7 @@ class DimensionTrendingDate:
     trending_date: datetime
     year: int
     month: int
-    day_of_month: int
+    day: int
     day_of_week: str
     week_of_month: int
     week_of_year: int
@@ -20,19 +20,19 @@ class DimensionTrendingDate:
 @dataclass
 class DimensionVideo:
     video_id: str
-    title: str
-    duration: int
-    caption: int
-    rank: int
-    published_at: str
-    description: str
-    tags: list[str]
+    video_title: str
+    video_duration: int
+    video_caption: int
+    video_rank: int
+    video_published_at: str
+    video_description: str
+    video_tags: list[str]
 
 
 @dataclass
 class DimensionChannel:
     channel_id: str
-    channel_title: str
+    channel_name: str
 
 
 @dataclass
@@ -42,24 +42,24 @@ class FactTrendingVideoStats:
     channel_pk: int
     category_id: int
     region_code: str
-    view_count: int
-    like_count: int
-    comment_count: int
+    video_view_count: int
+    video_like_count: int
+    video_comment_count: int
 
 
 def parse_trending_date(trending_date: str) -> dict:
     trending_date = datetime.strptime(trending_date, "%Y-%m-%d")
     year = trending_date.year
     month = trending_date.month
-    day_of_month = trending_date.day
+    day = trending_date.day
     day_of_week = day_name[trending_date.weekday()]
-    week_of_month = (day_of_month - 1) // 7 + 1
+    week_of_month = (day - 1) // 7 + 1
     week_of_year = trending_date.isocalendar().week
     dim_trending_date = DimensionTrendingDate(
         trending_date,
         year,
         month,
-        day_of_month,
+        day,
         day_of_week,
         week_of_month,
         week_of_year,
@@ -129,7 +129,7 @@ def parse_trending_video_stats(statistics: dict) -> dict:
 def parse_video_data(data: dict, file_name: Path) -> tuple[dict, dict, dict, dict]:
     file_name = file_name.stem
     data["trendingDate"] = file_name[3:-2].replace("_", "-")
-    # (trending_date, year, month, day_of_month, day_of_week, week_of_month, week_of_year)
+    # (trending_date, year, month, day, day_of_week, week_of_month, week_of_year)
     trending_date = parse_trending_date(data["trendingDate"])
     # (video_id, title, duration, caption, rank, published_at, description, tags)
     dim_video = parse_dim_video(data)
