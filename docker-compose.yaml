@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+    datawarehouse:
+        container_name: datawarehouse
+        image: postgres:16.0
+        environment:
+          POSTGRES_DB: "${DATABASE_NAME}"
+          POSTGRES_HOST: "${DATABASE_HOST}"
+          POSTGRES_PASSWORD: "${DATABASE_PASSWORD}"
+          POSTGRES_PORT: "${DATABASE_PORT}"
+          POSTGRES_USER: "${DATABASE_USER}"
+        volumes:
+            - db-data:/var/lib/postgresql/data
+        ports:
+            - "5432:5432"
+        restart: unless-stopped
+
+    pgadmin:
+        container_name: pgadmin4
+        image: dpage/pgadmin4
+        environment:
+            PGADMIN_DEFAULT_EMAIL: "${DATABASE_DEFAULT_EMAIL}"
+            PGADMIN_DEFAULT_PASSWORD: "${DATABASE_PASSWORD}"
+            PGADMIN_CONFIG_SERVER_MODE: 'False'   
+        volumes:
+            - pgadmin-data:/var/lib/pgadmin
+        ports:
+            - "5050:80"
+        restart: unless-stopped
+    
+    trendwatch:
+        container_name: trendwatch
+        build:
+            context: .
+            dockerfile: Dockerfile
+        depends_on:
+            - datawarehouse
+
+volumes:
+    db-data:
+      driver: local
+    pgadmin-data:
+      driver: local
