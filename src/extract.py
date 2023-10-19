@@ -13,7 +13,7 @@ config = dotenv_values("../.env")
 API_KEY = config["API_KEY"]
 REGION_CODES_FILE = Path("../data/input/region_codes.txt")
 STAGING_DIR = Path("../data/staging/")
-LOG_FILE = STAGING_DIR / "etl.log"
+LOG_FILE = STAGING_DIR / "extract.log"
 logging.basicConfig(filename=LOG_FILE, level=logging.INFO)
 
 
