@@ -5,6 +5,9 @@ from pathlib import Path
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from dotenv import dotenv_values
+import logging
+import re
+from datetime import datetime
 
 
 config = dotenv_values("../.env")
@@ -16,15 +19,23 @@ DB_HOST = config["DATABASE_HOST"]
 DB_PORT = config["DATABASE_PORT"]
 STAGING_DIR = Path("../data/staging/")
 OUTPUT_DIR = Path("../data/output/")
+LOGS_DIR = Path("../data/logs/")
+
+exec_time = str(datetime.exec_time()).split(".")[0]
+exec_time = re.sub(r"-|:|\s", "_", exec_time)
+LOG_FILE = LOGS_DIR / f"{exec_time}.log"
+logging.basicConfig(filename=LOG_FILE, level=logging.INFO)
 
 
 def main(session) -> None:
     # EXTRACT
-    extract.main()
+    logging.info("Start Fetching Data...")
+    # extract.main()
+    logging.info("Data Fetched Successfully.")
     # TRANSFORM & LOAD
     json_files = STAGING_DIR.glob("*.json")
+    logging.info("Start Transforming data...")
     for json_file in json_files:
-        print(json_file)
         data = transform.read_json_file(json_file)
         for video_data in data:
             data = transform.parse_video_data(video_data, json_file)
@@ -36,9 +47,10 @@ def main(session) -> None:
             video_statistics["video_pk"] = video_pk
             video_statistics["channel_pk"] = channel_pk
             trending_stats = transform.parse_trending_video_stats(video_statistics)
-            load_trending_video_stats(session, trending_stats)
-        # move file from staging to output
+            load.load_trending_video_stats(session, trending_stats)
+        logging.info(f"{json_file.name} transformed and loaded successfully")
         json_file.rename(OUTPUT_DIR / json_file.name)
+        logging.info(f"{json_file.name} moved from STAGING AREA to OUTPUT folder")
 
 
 if __name__ == "__main__":
