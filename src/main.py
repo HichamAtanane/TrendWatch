@@ -1,14 +1,17 @@
 import extract
 import transform
 import load
-from pathlib import Path
+
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy.exc import IntegrityError
+
 from dotenv import dotenv_values
+from datetime import datetime
+from pathlib import Path
 import logging
 import re
-from datetime import datetime
-
+import sys
 
 config = dotenv_values("../.env")
 DB = config["DATABASE"]
@@ -21,7 +24,10 @@ STAGING_DIR = Path("../data/staging/")
 OUTPUT_DIR = Path("../data/output/")
 LOGS_DIR = Path("../data/logs/")
 
-exec_time = str(datetime.exec_time()).split(".")[0]
+CATEGORY_IDS = [0,1,2,10,15,17,18,19,20,21,22,23,24,25,26,27,28,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,]
+
+
+exec_time = str(datetime.now()).split(".")[0]
 exec_time = re.sub(r"-|:|\s", "_", exec_time)
 LOG_FILE = LOGS_DIR / f"{exec_time}.log"
 logging.basicConfig(filename=LOG_FILE, level=logging.INFO)
@@ -47,6 +53,8 @@ def main(session) -> None:
             video_statistics["video_pk"] = video_pk
             video_statistics["channel_pk"] = channel_pk
             trending_stats = transform.parse_trending_video_stats(video_statistics)
+            if trending_stats["category_id"] not in CATEGORY_IDS:
+                trending_stats["category_id"] = 0
             load.load_trending_video_stats(session, trending_stats)
         logging.info(f"{json_file.name} transformed and loaded successfully")
         json_file.rename(OUTPUT_DIR / json_file.name)
