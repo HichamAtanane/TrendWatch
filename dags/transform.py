@@ -119,9 +119,9 @@ def parse_trending_video_stats(statistics: dict) -> dict:
         channel_pk,
         category_id,
         region_code,
-        comment_count,
-        like_count,
         view_count,
+        like_count,
+        comment_count,
     )
     return asdict(trending_video_stats)
 

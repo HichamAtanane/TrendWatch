@@ -4,25 +4,25 @@ import load
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from sqlalchemy.exc import IntegrityError
 
 from dotenv import dotenv_values
 from datetime import datetime
 from pathlib import Path
 import logging
 import re
-import sys
+from pathlib import Path
 
-config = dotenv_values("../.env")
+parent_dir = Path(__file__).resolve().parents[1]
+config = dotenv_values(parent_dir / ".env")
 DB = config["DATABASE"]
 DB_USER = config["DATABASE_USER"]
 DB_PASSWORD = config["DATABASE_PASSWORD"]
 DB_NAME = config["DATABASE_NAME"]
 DB_HOST = config["DATABASE_HOST"]
 DB_PORT = config["DATABASE_PORT"]
-STAGING_DIR = Path("../data/staging/")
-OUTPUT_DIR = Path("../data/output/")
-LOGS_DIR = Path("../data/logs/")
+STAGING_DIR = parent_dir / "data/staging/"
+OUTPUT_DIR = parent_dir / "data/output/"
+LOGS_DIR = parent_dir / "data/logs/"
 
 CATEGORY_IDS = [0,1,2,10,15,17,18,19,20,21,22,23,24,25,26,27,28,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,]
 
@@ -36,7 +36,7 @@ logging.basicConfig(filename=LOG_FILE, level=logging.INFO)
 def main(session) -> None:
     # EXTRACT
     logging.info("Start Fetching Data...")
-    # extract.main()
+    extract.main()
     logging.info("Data Fetched Successfully.")
     # TRANSFORM & LOAD
     json_files = STAGING_DIR.glob("*.json")

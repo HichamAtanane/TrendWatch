@@ -1,21 +1,21 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker
 from sqlalchemy.exc import ProgrammingError
-from db_models import Base, DimCategory, DimRegion
+from dags.db_models import Base, DimCategory, DimRegion
 from dotenv import dotenv_values
 import json
 from pathlib import Path
 
 
-config = dotenv_values("../.env")
+config = dotenv_values("./.env")
 DB = config["DATABASE"]
 DB_USER = config["DATABASE_USER"]
 DB_PASSWORD = config["DATABASE_PASSWORD"]
 DB_NAME = config["DATABASE_NAME"]
 DB_HOST = config["DATABASE_HOST"]
 DB_PORT = config["DATABASE_PORT"]
-REGION_CODES = Path("../data/input/dim_region_codes.json")
-VIDEO_CATEGORIES = Path("../data/input/dim_video_categories.json")
+REGION_CODES = Path("./data/input/dim_region_codes.json")
+VIDEO_CATEGORIES = Path("./data/input/dim_video_categories.json")
 
 
 def read_json_file(file: Path) -> list[dict]:

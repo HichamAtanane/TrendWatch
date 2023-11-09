@@ -7,12 +7,14 @@ from datetime import datetime
 from typing import Optional
 from googleapiclient.discovery import build
 from dotenv import dotenv_values
+from pathlib import Path
 
 
-config = dotenv_values("../.env")
+parent_dir = Path(__file__).resolve().parents[1]
+config = dotenv_values(parent_dir / ".env")
 API_KEY = config["API_KEY"]
-REGION_CODES_FILE = Path("../data/input/region_codes.txt")
-STAGING_DIR = Path("../data/staging/")
+REGION_CODES_FILE = parent_dir / "data/input/region_codes.txt"
+STAGING_DIR = parent_dir / "data/staging/"
 LOG_FILE = STAGING_DIR / "extract.log"
 logging.basicConfig(filename=LOG_FILE, level=logging.INFO)
 

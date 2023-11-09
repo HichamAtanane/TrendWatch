@@ -1,8 +1,10 @@
 from pathlib import Path
 from db_models import DimTrendingDate, DimVideo, DimChannel, FactTrendingVideoStats
+from pathlib import Path
 
 
-STAGING_DIR = Path("../data/staging")
+parent_dir = Path(__file__).resolve().parents[1]
+STAGING_DIR = parent_dir / "data/staging"
 
 
 def load_dim_trending_date(session, data: dict) -> str:
