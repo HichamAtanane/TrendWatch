@@ -46,7 +46,7 @@ def trendwatch_etl_dag():
     @task(retries=3, retry_delay=timedelta(minutes=30))
     def extract_data():
         logging.info("Start Fetching Data...")
-        # extract.main()
+        extract.main()
         logging.info("Data Fetched Successfully.")
 
 
